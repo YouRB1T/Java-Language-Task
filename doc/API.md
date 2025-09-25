@@ -57,13 +57,12 @@ POST .../numbers
 Request
 ```json
 {
-  "id": "UUID",
   "number": "String",
   "person_id": "UUID"
 }
 ```
 
-Response
+Response    
 ```json
 {
   "person_data": {
@@ -131,7 +130,7 @@ Response
 }
 ```
 
-DELETE .../persons/{id="UUID"}
+DELETE .../persons?id="UUID"
 
 Response
 ```json

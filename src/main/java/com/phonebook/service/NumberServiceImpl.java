@@ -28,7 +28,7 @@ public class NumberServiceImpl implements NumberService {
         }
 
         Number number = new Number(
-                request.getId() != null ? request.getId() : UUID.randomUUID(),
+                UUID.randomUUID(),
                 request.getNumber()
         );
 
