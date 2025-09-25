@@ -1,0 +1,33 @@
+package com.phonebook.model.dto.request;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import java.util.UUID;
+
+@Data
+@NoArgsConstructor
+public class DtoUpdatePersonRequest {
+    @JsonProperty("person_data")
+    private PersonData personData;
+
+    @Data
+    public static class PersonData {
+        private UUID id;
+        @JsonProperty("first_name")
+        private String firstName;
+        @JsonProperty("last_name")
+        private String lastName;
+        private Numbers numbers;
+    }
+
+    @Data
+    public static class Numbers {
+        private String number1;
+        private String number2;
+        private String number3;
+    }
+}
