@@ -1,0 +1,6 @@
+0:0:0:0:0:0:0:1 - - [25/Sep/2025:17:16:36 +0300] "GET /JavaLanguageTask HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [25/Sep/2025:17:16:40 +0300] "GET /JavaLanguageTask/ HTTP/1.1" 200 57
+0:0:0:0:0:0:0:1 - - [25/Sep/2025:17:16:41 +0300] "GET /favicon.ico HTTP/1.1" 404 703
+0:0:0:0:0:0:0:1 - - [25/Sep/2025:17:18:42 +0300] "GET /JavaLanguageTask/persons HTTP/1.1" 200 18
+0:0:0:0:0:0:0:1 - - [25/Sep/2025:17:19:13 +0300] "GET /JavaLanguageTask/numbers HTTP/1.1" 405 786
+0:0:0:0:0:0:0:1 - - [25/Sep/2025:17:19:40 +0300] "GET /JavaLanguageTask/persons HTTP/1.1" 200 18

@@ -1,0 +1,38 @@
+25-Sep-2025 17:16:26.992 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/10.1.46
+25-Sep-2025 17:16:27.001 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Sep 8 2025 14:26:21 UTC
+25-Sep-2025 17:16:27.002 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  10.1.46.0
+25-Sep-2025 17:16:27.002 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
+25-Sep-2025 17:16:27.002 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             10.0
+25-Sep-2025 17:16:27.003 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           amd64
+25-Sep-2025 17:16:27.004 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Users\User_ne_obuser\.jdks\corretto-17.0.12
+25-Sep-2025 17:16:27.004 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            17.0.12+7-LTS
+25-Sep-2025 17:16:27.004 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Amazon.com Inc.
+25-Sep-2025 17:16:27.004 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\User_ne_obuser\IdeaProjects\Java-Language-Task\apache-tomcat-10.1.46
+25-Sep-2025 17:16:27.004 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\User_ne_obuser\Desktop\apache-tomcat-10.1.46
+25-Sep-2025 17:16:27.026 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+25-Sep-2025 17:16:27.027 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+25-Sep-2025 17:16:27.028 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+25-Sep-2025 17:16:27.028 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+25-Sep-2025 17:16:27.029 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+25-Sep-2025 17:16:27.029 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\User_ne_obuser\Desktop\apache-tomcat-10.1.46
+25-Sep-2025 17:16:27.030 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\User_ne_obuser\IdeaProjects\Java-Language-Task\apache-tomcat-10.1.46
+25-Sep-2025 17:16:27.031 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\User_ne_obuser\IdeaProjects\Java-Language-Task\apache-tomcat-10.1.46\temp
+25-Sep-2025 17:16:27.031 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\User_ne_obuser\IdeaProjects\Java-Language-Task\apache-tomcat-10.1.46\conf\logging.properties
+25-Sep-2025 17:16:27.031 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+25-Sep-2025 17:16:27.032 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.0.1\lib\idea_rt.jar=57917:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.0.1\bin
+25-Sep-2025 17:16:27.032 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+25-Sep-2025 17:16:27.955 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [2.0.9] using APR version [1.7.6].
+25-Sep-2025 17:16:28.001 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.5.0 8 Apr 2025]
+25-Sep-2025 17:16:28.521 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8080"]
+25-Sep-2025 17:16:28.548 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [2186] milliseconds
+25-Sep-2025 17:16:28.643 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+25-Sep-2025 17:16:28.643 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.46]
+25-Sep-2025 17:16:28.668 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [C:\Users\User_ne_obuser\IdeaProjects\Java-Language-Task\apache-tomcat-10.1.46\conf\Catalina\localhost\JavaLanguageTask.xml]
+25-Sep-2025 17:16:31.224 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+25-Sep-2025 17:16:31.388 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\User_ne_obuser\IdeaProjects\Java-Language-Task\apache-tomcat-10.1.46\conf\Catalina\localhost\JavaLanguageTask.xml] has finished in [2 717] ms
+25-Sep-2025 17:16:31.396 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+25-Sep-2025 17:16:31.513 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [2964] milliseconds
+25-Sep-2025 17:24:07.339 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+25-Sep-2025 17:24:07.624 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+25-Sep-2025 17:24:07.759 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+25-Sep-2025 17:24:07.813 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
