@@ -1,11 +1,18 @@
 package com.phonebook.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.phonebook.model.dto.request.DtoAddNumberRequest;
+import com.phonebook.model.dto.request.DtoDeleteNumberRequest;
+import com.phonebook.model.dto.response.DtoAddNumberResponse;
+import com.phonebook.model.dto.response.DtoDeleteNumberResponse;
 import com.phonebook.service.NumberService;
 import com.phonebook.service.NumberServiceImpl;
 import com.phonebook.service.PersonService;
 import com.phonebook.service.PersonServiceImpl;
 import org.apache.commons.cli.*;
+
+import java.util.UUID;
 
 public class CommandController {
 
@@ -74,7 +81,7 @@ public class CommandController {
         return options;
     }
 
-    public boolean execute(String[] args) throws ParseException {
+    public boolean execute(String[] args) throws ParseException, JsonProcessingException {
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, args);
 
@@ -94,11 +101,77 @@ public class CommandController {
         }
     }
 
-    private boolean handleNumberOperations(CommandLine cmd) {
-        return false;
+    private boolean handleNumberOperations(CommandLine cmd) throws JsonProcessingException {
+        if (cmd.hasOption("nadd")) {
+            return handleAddNumber(cmd.getOptionValues("nadd"));
+        } else if (cmd.hasOption("ndel")) {
+            return handleDeleteNumber(cmd.getOptionValue("ndel"));
+        } else {
+            System.err.println("Ошибка: не указана операция для номеров");
+            printHelp();
+            return false;
+        }
+    }
+
+    private boolean handleDeleteNumber(String ndel) throws JsonProcessingException {
+        DtoDeleteNumberRequest request = new DtoDeleteNumberRequest(ndel);
+        DtoDeleteNumberResponse response = numberService.deleteNumber(request);
+        if (response == null) {
+            return false;
+        } else {
+            printJsonResponse(response.toString());
+            return true;
+        }
+    }
+
+    private boolean handleAddNumber(String[] nadds) throws JsonProcessingException {
+        String number = nadds[0];
+        UUID personId = UUID.fromString(nadds[1]);
+        DtoAddNumberRequest request = new DtoAddNumberRequest(number, personId);
+        DtoAddNumberResponse response = numberService.addNumber(request);
+        if (response == null) {
+            return false;
+        } else {
+            printJsonResponse(response.toString());
+            return true;
+        }
     }
 
     private boolean handlePersonOperations(CommandLine cmd) {
+        if (cmd.hasOption("all")) {
+            return handleGetAllPersons();
+        } else if (cmd.hasOption("add")) {
+            return handleAddPerson(cmd.getOptionValues("add"));
+        } else if (cmd.hasOption("fnd")) {
+            return handleFindPerson(cmd.getOptionValues("fnd"));
+        } else if (cmd.hasOption("del")) {
+            return handleDeletePerson(cmd.getOptionValue("del"));
+        } else if (cmd.hasOption("upt")) {
+            return handleUpdatePerson(cmd.getOptionValues("upt"));
+        } else {
+            System.err.println("Ошибка: не указана операция для пользователей");
+            printHelp();
+            return false;
+        }
+    }
+
+    private boolean handleUpdatePerson(String[] upts) {
+        return false;
+    }
+
+    private boolean handleDeletePerson(String del) {
+        return false;
+    }
+
+    private boolean handleFindPerson(String[] fnds) {
+        return false;
+    }
+
+    private boolean handleAddPerson(String[] adds) {
+        return false;
+    }
+
+    private boolean handleGetAllPersons() {
         return false;
     }
 
@@ -122,5 +195,10 @@ public class CommandController {
 
         System.out.println("Общие команды:\n");
         System.out.println("  telebook -h                        Показать справку\n");
+    }
+
+    private void printJsonResponse(Object response) throws JsonProcessingException {
+        String json = objectMapper.writeValueAsString(response);
+        System.out.println(json);
     }
 }
