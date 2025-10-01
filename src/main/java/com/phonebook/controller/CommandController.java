@@ -2,10 +2,8 @@ package com.phonebook.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.phonebook.model.dto.request.DtoAddNumberRequest;
-import com.phonebook.model.dto.request.DtoDeleteNumberRequest;
-import com.phonebook.model.dto.response.DtoAddNumberResponse;
-import com.phonebook.model.dto.response.DtoDeleteNumberResponse;
+import com.phonebook.model.dto.request.*;
+import com.phonebook.model.dto.response.*;
 import com.phonebook.service.NumberService;
 import com.phonebook.service.NumberServiceImpl;
 import com.phonebook.service.PersonService;
@@ -137,7 +135,7 @@ public class CommandController {
         }
     }
 
-    private boolean handlePersonOperations(CommandLine cmd) {
+    private boolean handlePersonOperations(CommandLine cmd) throws JsonProcessingException {
         if (cmd.hasOption("all")) {
             return handleGetAllPersons();
         } else if (cmd.hasOption("add")) {
@@ -155,24 +153,91 @@ public class CommandController {
         }
     }
 
-    private boolean handleUpdatePerson(String[] upts) {
-        return false;
+    private boolean handleUpdatePerson(String[] upts) throws JsonProcessingException {
+        DtoUpdatePersonRequest request = new DtoUpdatePersonRequest(new DtoUpdatePersonRequest.PersonData(
+                UUID.fromString(upts[0]),
+                upts[1],
+                upts[2],
+                new DtoUpdatePersonRequest.Numbers(
+                        upts[3],
+                        upts[4],
+                        upts[5]
+                )
+        ));
+
+        DtoUpdatePersonResponse response = personService.updatePerson(request);
+
+        if (response == null) {
+            return false;
+        } else {
+            printJsonResponse(response.toString());
+            return true;
+        }
     }
 
-    private boolean handleDeletePerson(String del) {
-        return false;
+    private boolean handleDeletePerson(String del) throws JsonProcessingException {
+        DtoDeletePersonRequest request = new DtoDeletePersonRequest(UUID.fromString(del));
+
+        DtoDeletePersonResponse response = personService.deletePerson(request);
+
+        if (response == null) {
+            return false;
+        } else {
+            printJsonResponse(response.toString());
+            return true;
+        }
     }
 
-    private boolean handleFindPerson(String[] fnds) {
-        return false;
+    private boolean handleFindPerson(String[] fnds) throws JsonProcessingException {
+        DtoFindPersonResponse response;
+
+        try {
+            UUID id = UUID.fromString(fnds[0]);
+            DtoFindPersonRequest request = new DtoFindPersonRequest(id);
+            response = personService.findPersonId(request);
+        } catch (IllegalArgumentException e) {
+            String lastName = fnds[0];
+            String number = fnds[1];
+            response = personService.findPersonNoId(lastName, number);
+        }
+
+        if (response == null) {
+            return false;
+        } else {
+            printJsonResponse(response.toString());
+            return true;
+        }
     }
 
-    private boolean handleAddPerson(String[] adds) {
-        return false;
+    private boolean handleAddPerson(String[] adds) throws JsonProcessingException {
+        DtoCreatPersonRequest request = new DtoCreatPersonRequest(new DtoCreatPersonRequest.PersonData(
+                adds[0],
+                adds[1],
+                new DtoCreatPersonRequest.Numbers(
+                        adds[2],
+                        adds[3],
+                        adds[4]
+                )
+        ));
+
+        DtoCreatePersonResponse response = personService.createPerson(request);
+
+        if (response == null) {
+            return false;
+        } else {
+            printJsonResponse(response.toString());
+            return true;
+        }
     }
 
-    private boolean handleGetAllPersons() {
-        return false;
+    private boolean handleGetAllPersons() throws JsonProcessingException {
+        DtoFindPersonsResponse response = personService.findPersons();
+        if (response == null) {
+            return false;
+        } else {
+            printJsonResponse(response.toString());
+            return true;
+        }
     }
 
     private void printHelp() {
@@ -185,12 +250,12 @@ public class CommandController {
         System.out.println("  telebook -p -all                    Получить всех пользователей\n");
         System.out.println("  telebook -p -add John Doe 123 456 789 Добавить пользователя\n");
         System.out.println("  telebook -p -fnd Doe 123           Найти по фамилии и номеру\n");
-        System.out.println("  telebook -p -fnd uuid-here         Найти по ID\n");
-        System.out.println("  telebook -p -del uuid-here         Удалить по ID\n");
-        System.out.println("  telebook -p -upt uuid John Doe 123 456 789 Обновить данные\n");
+        System.out.println("  telebook -p -fnd uuid-person         Найти по ID\n");
+        System.out.println("  telebook -p -del uuid-person         Удалить по ID\n");
+        System.out.println("  telebook -p -upt uuid-person John Doe 123 456 789 Обновить данные\n");
 
         System.out.println("Работа с номерами:\n");
-        System.out.println("  telebook -n -add 999-888 uuid     Добавить номер пользователю\n");
+        System.out.println("  telebook -n -add 999-888 uuid-person     Добавить номер пользователю\n");
         System.out.println("  telebook -n -del 123-456          Удалить номер\n");
 
         System.out.println("Общие команды:\n");

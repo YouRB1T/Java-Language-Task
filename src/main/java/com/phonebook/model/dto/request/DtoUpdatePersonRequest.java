@@ -10,11 +10,13 @@ import java.util.UUID;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class DtoUpdatePersonRequest {
     @JsonProperty("person_data")
     private PersonData personData;
 
     @Data
+    @AllArgsConstructor
     public static class PersonData {
         private UUID id;
         @JsonProperty("first_name")
@@ -25,6 +27,7 @@ public class DtoUpdatePersonRequest {
     }
 
     @Data
+    @AllArgsConstructor
     public static class Numbers {
         private String number1;
         private String number2;

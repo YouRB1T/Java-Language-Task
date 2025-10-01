@@ -9,11 +9,13 @@ import java.util.UUID;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class DtoCreatPersonRequest {
     @JsonProperty("person_data")
     private PersonData personData;
 
     @Data
+    @AllArgsConstructor
     public static class PersonData {
         @JsonProperty("first_name")
         private String firstName;
@@ -27,6 +29,7 @@ public class DtoCreatPersonRequest {
     }
 
     @Data
+    @AllArgsConstructor
     public static class Numbers {
         private String number1;
         private String number2;
